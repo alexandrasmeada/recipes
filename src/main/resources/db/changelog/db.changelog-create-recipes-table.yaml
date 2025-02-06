@@ -1,0 +1,45 @@
+databaseChangeLog:
+  - changeSet:
+      id: recipe
+      author: alexandrasmeada
+      changes:
+        - createTable:
+            tableName: recipe
+            columns:
+              - column:
+                  name: id_recipe
+                  type: serial
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: recipe_name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: recipe_description
+                  type: TEXT
+              - column:
+                  name: recipe_category_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_recipe_category
+                    references: category(id_category)
+              - column:
+                  name: recipe_ingredients
+                  type: TEXT
+              - column:
+                  name: recipe_instructions
+                  type: TEXT
+              - column:
+                  name: preparation_time
+                  type: BIGINT
+              - column:
+                  name: cooking_time
+                  type: BIGINT
+              - column:
+                  name: total_time
+                  type: BIGINT
